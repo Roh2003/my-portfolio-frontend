@@ -17,7 +17,7 @@ const ProjectPage = () => {
     {
       name: 'Zenvaitality',
       description: 'This is a yoga and Health Management project which i made using python and python verious libreries.',
-      image: './pic 52.jpg',
+      image: './yoga.jpg',
       link: 'https://example.com/project3',
     },
   ];
