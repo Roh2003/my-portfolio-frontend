@@ -17,7 +17,11 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/send-email", formData);
+      const response = await axios.post(
+  "https://my-portfolio-backend-nflk.onrender.com/send-email",
+  formData
+);
+
       alert(response.data.message);
       setFormData({ name: "", email: "", message: "",phone:"" });
     } catch (error) {
