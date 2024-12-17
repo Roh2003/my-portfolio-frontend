@@ -4,20 +4,20 @@ const ProjectPage = () => {
   const projects = [
     {
       name: 'TravelOne',
-      description: 'This is a brief description of Project One. It showcases amazing features and functionalities.',
+      description: 'This Is My Latest React Web Development Project Which i Made Using MERN Stack.',
       image: 'rajasthan.jpg',
       link: 'https://example.com/project1',
     },
     {
       name: 'SpaceSnap',
-      description: 'This is a brief description of Project Two. It includes state-of-the-art solutions.',
+      description: 'This Is My First Ever Project That i had build when i started my Web development journey.',
       image: './pic21.jpg',
       link: 'https://example.com/project2',
     },
     {
-      name: 'Project Three',
-      description: 'This is a brief description of Project Three. It demonstrates modern technologies.',
-      image: './project3.jpg',
+      name: 'Zenvaitality',
+      description: 'This is a yoga and Health Management project which i made using python and python verious libreries.',
+      image: './pic52.jpg',
       link: 'https://example.com/project3',
     },
   ];
