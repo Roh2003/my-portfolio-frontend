@@ -181,7 +181,7 @@ function Home() {
                             className="bg-slate-600 rounded-3xl mt-8 sm:mt-0 flex items-center justify-center mr-16
                             hover:shadow-yellow-50 hover:shadow-lg transition-all ease-in 0.5s grayscale hover:grayscale-0 overflow-hidden hover:scale-110 active:animate-pulse"
                         >
-                            <img src="rohit4.png" alt="My photo" className="w-64 h-auto rounded-lg" />
+                            <img src="rohit5.jpg" alt="My photo" className="w-64 h-auto rounded-lg" />
                         </div>
                     </div>
                 </Element>
