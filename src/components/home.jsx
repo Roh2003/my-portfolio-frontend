@@ -143,7 +143,7 @@ function Home() {
                                     <FontAwesomeIcon icon={faTwitter} className="text-2xl" />
                                 </a>
                                 <a
-                                    href="https://instagram.com"
+                                    href="https://www.instagram.com/rohit_28_03?igsh=amtoZnBxeTRnM3Ry"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="bg-white text-black p-3 rounded-md hover:bg-pink-500 hover:text-white"
@@ -151,7 +151,7 @@ function Home() {
                                     <FontAwesomeIcon icon={faInstagram} className="text-2xl" />
                                 </a>
                                 <a
-                                    href="https://linkedin.com"
+                                    href="https://www.linkedin.com/in/rohit-saundalkar-209678314"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="bg-white text-black p-3 rounded-md hover:bg-blue-500 hover:text-white"
@@ -159,7 +159,7 @@ function Home() {
                                     <FontAwesomeIcon icon={faLinkedin} className="text-2xl" />
                                 </a>
                                 <a
-                                    href="https://github.com"
+                                    href="https://github.com/Roh2003"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="bg-white text-black p-3 rounded-md hover:bg-black hover:text-white"
