@@ -28,7 +28,7 @@ const ProjectPage = () => {
       <h1 className="text-4xl font-bold text-white mb-8 text-center py-10">My Projects</h1>
 
       {/* Projects Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-0 sm:mx-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-5 sm:mx-10">
         {projects.map((project, index) => (
           <div
             key={index}
