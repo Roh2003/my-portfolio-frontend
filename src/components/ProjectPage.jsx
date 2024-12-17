@@ -32,7 +32,7 @@ const ProjectPage = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="relative rounded-2xl shadow-xl overflow-hidden bg-zinc-700 group hover:scale-105 hover:shadow-2xl transform transition-all duration-500 ease-in-out"
+            className="relative rounded-2xl shadow-xl overflow-hidden bg-cyan-950 group hover:scale-105 hover:shadow-2xl transform transition-all duration-500 ease-in-out"
           >
             {/* Hover Overlay with a gradient and opacity change */}
             <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
@@ -51,7 +51,7 @@ const ProjectPage = () => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-white text-black py-2 px-4 rounded-lg shadow-md hover:bg-gray-200 transition-colors"
+                className="inline-block font-semibold bg-gray-200 text-black py-2 px-4 rounded-lg shadow-md hover:bg-gray-800 hover:text-white transition-colors"
               >
                 View Project
               </a>
