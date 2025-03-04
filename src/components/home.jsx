@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import Typewriter from 'typewriter-effect';
 import { Link, Element } from 'react-scroll';
+import { motion } from 'framer-motion';
 
 import ContactPage from './ContactPage';
 import Footer from './footer';
@@ -21,9 +22,15 @@ function Home() {
 
     return (
         <>
-            <div className="bg-slate-900 min-h-screen pb-10">
+            <div className="bg-slate-900 min-h-screen pb-10 overflow-hidden">
                 {/* Navbar */}
-                <nav className="text-white w-full flex justify-between bg-slate-800 pb-4 sticky z-10">
+                <motion.nav 
+                initial={{ y: "-100%" }} // Start from just outside the parent (no scrollbar issue)
+                animate={{ y: 0 }} // Move to original position
+                transition={{ duration: 1, ease: "easeInOut" }} // Smooth fade & slide-in effect
+
+                
+                className="text-white w-full flex justify-between bg-slate-800 pb-4 sticky z-10">
                     <h1 className="pt-5 pl-6 text-2xl font-bold">Portfolio.</h1>
                     <ul className="hidden sm:flex justify-end w-full pt-5 sm:pr-10 sm:gap-4 cursor-pointer">
                         <li>
@@ -94,13 +101,18 @@ function Home() {
                             </Link>
                         </div>
                     </div>
-                </nav>
+                </motion.nav>
 
                 {/* Main Section */}
                 <Element name="Home">
                     <div className="flex flex-col gap-5 sm:grid sm:grid-cols-3 sm:gap-6 justify-center items-center min-h-screen px-10 sm:px-0">
                         {/* Text Content */}
-                        <div className="text-white pt-10 col-span-2 pl-5 sm:pt-0">
+                        <motion.div
+                        initial={{ translateX: "150%", opacity: 0 }} // Start from just outside the parent (no scrollbar issue)
+                        animate={{ translateX: 0, opacity: [0, 0.2, 0.5, 0.75, 0.9, 1],  }} // Move to original position & fade in
+                        transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1]  }} 
+
+                         className="text-white pt-10 col-span-2 pl-5 sm:pt-0">
                             <h3 className="text-4xl font-bold">Hello, It's me</h3>
                             <h1 className="text-6xl font-bold py-4">Rohit Saundalkar</h1>
 
@@ -174,16 +186,22 @@ function Home() {
                                     Download CV
                                 </a>
                             </button>
-                        </div>
+                        </motion.div>
                         
 
                         {/* Image */}
-                        <div
-                            className="bg-slate-600 rounded-3xl mt-8 sm:mt-0 flex items-center justify-center mr-16
-                            hover:shadow-yellow-50 hover:shadow-lg transition-all ease-in 0.5s grayscale hover:grayscale-0 overflow-hidden hover:scale-110 active:animate-pulse"
+                        <motion.div
+                        initial={{ translateX: "150%", opacity: 0 }} // Start from just outside the parent (no scrollbar issue)
+                        animate={{ translateX: 0, opacity: 1,  }} // Move to original position & fade in
+                        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1]  }} // Smooth fade & slide-in effect
+                        className=" bg-slate-600 rounded-3xl mt-8 sm:mt-0 flex items-center justify-center mr-16
+                            hover:shadow-yellow-50 hover:shadow-lg transition-all ease-in-out duration-500
+                            grayscale hover:grayscale-0 overflow-hidden hover:scale-110 active:animate-pulse"
                         >
-                            <img src="rohit5.jpg" alt="My photo" className="w-64 h-auto rounded-lg" />
-                        </div>
+                        <img src="rohit5.jpg" alt="My photo" className="w-full h-auto rounded-lg" />
+                        </motion.div>
+
+
                     </div>
                 </Element>
 

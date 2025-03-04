@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const EducationCard = ({ image, title, subtitle, year, status,branch }) => {
   return (
@@ -44,7 +45,13 @@ const EducationCards = () => {
   ];
 
   return (
-    <div className="bg-slate-900 min-h-screen sm:p-4 md:p-8 space-y-6 pt-20">
+    <motion.div 
+    initial={{ translateX: "50%", opacity: 0 }} // Start from just outside the parent (no scrollbar issue)
+    whileInView={{ translateX: 0, opacity: 1}}// Move to original position & fade in
+    transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1]  }} 
+    viewport={{ once: true, amount: 0.2 }}
+    
+    className="bg-slate-900 min-h-screen sm:p-4 md:p-8 space-y-6 pt-20 overflow-hidden">
         <h1 className='text-4xl text-yellow-600 font-bold text-center pb-10'> My Education </h1>
       {educationData.map((edu, index) => (
         <EducationCard
@@ -57,7 +64,7 @@ const EducationCards = () => {
           status={edu.status}
         />
       ))}
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const ProjectPage = () => {
   const projects = [
@@ -6,7 +7,7 @@ const ProjectPage = () => {
       name: 'TravelOne',
       description: 'This Is My Latest React Web Development Project Which i Made Using MERN Stack.',
       image: 'rajasthan.jpg',
-      link: 'https://example.com/project1',
+      link: 'https://travel-buddy-roan.vercel.app/',
     },
     {
       name: 'SpaceSnap',
@@ -28,7 +29,13 @@ const ProjectPage = () => {
       <h1 className="text-4xl font-bold text-white mb-8 text-center py-10">My Projects</h1>
 
       {/* Projects Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-5 sm:mx-10">
+      <motion.div
+      initial={{ translateX: "50%", opacity: 0 }} // Start from just outside the parent (no scrollbar issue)
+      whileInView={{ translateX: 0, opacity: 1 }} // Move to original position & fade in
+      transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1]  }} 
+      viewport={{ once: true, amount: 0.2 }}
+      
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-5 sm:mx-10">
         {projects.map((project, index) => (
           <div
             key={index}
@@ -58,7 +65,7 @@ const ProjectPage = () => {
             </div>
           </div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
