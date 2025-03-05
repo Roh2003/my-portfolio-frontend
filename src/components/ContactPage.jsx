@@ -11,23 +11,31 @@ const ContactPage = () => {
     phone:"",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    const loadingToast = toast.loading("Sending message. Please wait...", {autoClose:false});
+
     try {
       const response = await axios.post(
         "https://my-portfolio-backend-nflk.onrender.com/send-email",
         formData
       );
-
+      toast.dismiss(loadingToast);
       toast.success(response.data.message);
       setFormData({ name: "", email: "", message: "",phone:"" });
     } catch (error) {
-      alert("Failed to send message. Please try again later.");
+      toast.dismiss(loadingToast);
+      toast.error("Failed to send message. Please try again later.");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -39,7 +47,8 @@ const ContactPage = () => {
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Get in Touch</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
 
-          <ToastContainer />
+          <ToastContainer 
+          />
           {/* Name Input */}
           <div>
             <label className="block text-gray-800 font-medium mb-2" htmlFor="name">
