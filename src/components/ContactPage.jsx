@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from "axios";
+import { ToastContainer , toast } from "react-toastify";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -18,11 +19,11 @@ const ContactPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-  "https://my-portfolio-backend-nflk.onrender.com/send-email",
-  formData
-);
+        "https://my-portfolio-backend-nflk.onrender.com/send-email",
+        formData
+      );
 
-      alert(response.data.message);
+      toast.success(response.data.message);
       setFormData({ name: "", email: "", message: "",phone:"" });
     } catch (error) {
       alert("Failed to send message. Please try again later.");
@@ -37,6 +38,8 @@ const ContactPage = () => {
       >
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Get in Touch</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
+
+          <ToastContainer />
           {/* Name Input */}
           <div>
             <label className="block text-gray-800 font-medium mb-2" htmlFor="name">
