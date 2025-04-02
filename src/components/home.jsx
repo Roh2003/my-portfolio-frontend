@@ -182,7 +182,7 @@ function Home() {
 
                             {/* Download CV Button */}
                             <button className="bg-slate-300 text-black px-4 py-2 mt-5 rounded-2xl font-bold hover:bg-blue-500 hover:text-white">
-                                <a href="Rohit_cv.pdf" download="Rohit_Resume.pdf">
+                                <a href="rohit_cv3.pdf" download="Rohit_Resume.pdf">
                                     Download CV
                                 </a>
                             </button>
