@@ -45,7 +45,7 @@ function Home() {
                         </li>
                         <li>
                             <Link to="about" smooth={true} duration={500} className="hover:text-yellow-500 hover:underline font-bold">
-                                Education
+                                edu
                             </Link>
                         </li>
                         <li>
