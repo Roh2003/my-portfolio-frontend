@@ -1,10 +1,6 @@
 import { useState } from 'react'
 import Home from './components/home'
-import ContactPage from './components/ContactPage'
-import Footer from './components/footer'
-import Skills from './components/skills'
-import ProjectPage from './components/ProjectPage'
-import Edu from './components/Edu'
+
 
 
 

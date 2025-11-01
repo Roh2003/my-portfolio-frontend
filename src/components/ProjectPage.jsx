@@ -1,8 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import {DraggableCardBody , DraggableCardContainer} from './ui/dragablecard'
 
 const ProjectPage = () => {
   const projects = [
+    {
+      name: 'ScaleUp.in',
+      className : "w-[900px] h-20 ",
+      description: 'This is An Ai Powered SAAS project which provides differents type of features to customers',
+      image: './image.png',
+      link: 'https://example.com/project3',
+    },
+    {
+      name: 'ReadAura.in',
+      description: 'This is An Fully Functional Book Recommended system which provides books to user sas per their requirements.',
+      image: './readaura.png',
+      link: 'https://example.com/project3',
+    },
     {
       name: 'TravelOne',
       description: 'This Is My Latest React Web Development Project Which i Made Using MERN Stack.',
@@ -25,47 +39,40 @@ const ProjectPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-slate-900 pb-24">
+
       
       <h1 className="text-4xl font-bold text-white mb-8 text-center py-10">My Projects</h1>
 
-      {/* Projects Container */}
-      <motion.div
-      initial={{ translateX: "50%", opacity: 0 }} // Start from just outside the parent (no scrollbar issue)
-      whileInView={{ translateX: 0, opacity: 1 }} // Move to original position & fade in
-      transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1]  }} 
-      viewport={{ once: true, amount: 0.2 }}
-      
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-5 sm:mx-10">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="relative rounded-2xl shadow-xl overflow-hidden bg-cyan-950 group hover:scale-105 hover:shadow-2xl transform transition-all duration-500 ease-in-out"
-          >
-            {/* Hover Overlay with a gradient and opacity change */}
-            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+      <DraggableCardContainer className="relative flex min-h-screen w-full items-center justify-center overflow-clip">
+      <p className="absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 text-center text-2xl font-black text-neutral-400 md:text-4xl dark:text-neutral-800">
+        If its your first day at Fight Club, you have to fight.
+      </p>
+      {projects.map((item) => (
+       <DraggableCardBody className="w-full max-w-4xl h-56 rounded-xl bg-transparent shadow-lg overflow-hidden flex flex-col items-center justify-center gap-4 p-4 border border-neutral-700">
+       <img
+         src={item.image}
+         alt={item.name}
+         className="w-full h-40 object-cover rounded-lg"
+       />
+       <h3 className="text-xl font-bold text-white text-center">
+         {item.name}
+       </h3>
+       <p className="text-neutral-300 text-center">{item.description}</p>
+       <a
+         href={item.link}
+         target="_blank"
+         rel="noopener noreferrer"
+         className="text-blue-400 underline text-sm"
+       >
+         Visit Project
+       </a>
+     </DraggableCardBody>
+     
+     
+      ))};
+      </DraggableCardContainer>
 
-            {/* Background Image */}
-            <div
-              className="h-56 bg-cover bg-center group-hover:scale-110 transform transition-all duration-500"
-              style={{ backgroundImage: `url(${project.image})` }}
-            ></div>
-
-            {/* Project Info */}
-            <div className="p-6 relative z-10">
-              <h2 className="text-2xl font-bold text-white mb-2">{project.name}</h2>
-              <p className="text-sm text-gray-100 mb-4">{project.description}</p>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block font-semibold bg-gray-200 text-black py-2 px-4 rounded-lg shadow-md hover:bg-gray-800 hover:text-white transition-colors"
-              >
-                View Project
-              </a>
-            </div>
-          </div>
-        ))}
-      </motion.div>
+     
     </div>
   );
 };
