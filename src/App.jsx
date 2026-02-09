@@ -1,19 +1,7 @@
-import { useState } from 'react'
-import Home from './components/home'
-
-
-
+import CyberPortfolio from './components/CyberPortfolio'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-    <Home />
-    
-    
-    </>
-  )
+  return <CyberPortfolio />
 }
 
 export default App
