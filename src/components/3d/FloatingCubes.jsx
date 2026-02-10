@@ -48,7 +48,6 @@ const CodeCube = ({ position, code, color = "#00ff88", delay = 0 }) => {
           color={color}
           anchorX="center"
           anchorY="middle"
-          font="/fonts/JetBrainsMono-Bold.woff"
         >
           {code}
         </Text>

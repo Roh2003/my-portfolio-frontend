@@ -224,7 +224,6 @@ const HolographicElements = ({ scrollProgress = 0 }) => {
           color={el.color}
           anchorX="center"
           anchorY="middle"
-          font="/fonts/mono.woff"
         >
           {el.text}
           <meshBasicMaterial transparent opacity={0.7 + scrollProgress * 0.3} />

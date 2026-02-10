@@ -370,18 +370,6 @@ export default function CyberPortfolio() {
       );
     });
 
-    // Parallax effect for background elements
-    gsap.to(".parallax-slow", {
-      yPercent: -20,
-      ease: "none",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-      },
-    });
-
   }, [isLoading]);
 
   const scrollToSection = (sectionId) => {
