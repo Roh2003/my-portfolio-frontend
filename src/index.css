@@ -517,6 +517,26 @@ body {
   animation: matrix-fall 3s linear infinite;
 }
 
+/* Profile Scan Animation */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+
+.animate-scan {
+  animation: scan 4s ease-in-out infinite;
+}
+
+/* Ping Animation Delay */
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .glitch-text::before,
@@ -531,6 +551,60 @@ body {
   
   .scanline-overlay {
     opacity: 0.1;
+  }
+  
+  /* Reduce 3D complexity on mobile */
+  canvas {
+    image-rendering: optimizeSpeed;
+  }
+  
+  /* Adjust hero section for mobile */
+  #home {
+    padding-top: 80px;
+  }
+  
+  /* Make text more readable on mobile */
+  .terminal-text {
+    font-size: 0.9rem;
+  }
+  
+  /* Stack hero content on mobile */
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .cyber-button {
+    padding: 8px 16px;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  
+  /* Reduce animations on small screens for performance */
+  .animate-spin-slow,
+  .animate-spin-reverse {
+    animation-duration: 30s;
+  }
+  
+  /* Smaller profile picture rings on mobile */
+  .profile-ring {
+    border-width: 1px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .cyber-button::before {
+    display: none;
+  }
+  
+  .social-icon:hover::before {
+    opacity: 0;
+  }
+  
+  .stat-card:hover::before {
+    left: -100%;
   }
 }
 

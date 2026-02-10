@@ -57,11 +57,14 @@ const CodeCube = ({ position, code, color = "#00ff88", delay = 0 }) => {
   );
 };
 
-const FloatingCubes = () => {
-  const codes = [
+const FloatingCubes = ({ count = 12 }) => {
+  const allCodes = [
     '{ }', '< />', '( )', '[ ]', '=> ', '::',
-    '++', '&&', '||', '!=', '===', '...'
+    '++', '&&', '||', '!=', '===', '...', 
+    '01', '10', 'fn', '()=>', 'if', 'for'
   ];
+  
+  const codes = allCodes.slice(0, count);
   
   const cubes = useMemo(() => {
     return codes.map((code, i) => ({
@@ -74,7 +77,7 @@ const FloatingCubes = () => {
       color: ['#00ff88', '#00ffff', '#ff00ff', '#ffff00', '#ff6600'][i % 5],
       delay: i * 0.5
     }));
-  }, []);
+  }, [count]);
 
   return (
     <group>

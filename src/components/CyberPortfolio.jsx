@@ -304,9 +304,22 @@ export default function CyberPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isLoading, setIsLoading] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
+  // Track scroll progress for 3D animation
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? window.scrollY / totalHeight : 0;
+      setScrollProgress(Math.min(1, Math.max(0, progress)));
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Loading screen
   useEffect(() => {
@@ -522,7 +535,7 @@ export default function CyberPortfolio() {
   return (
     <div ref={containerRef} className="relative min-h-screen bg-black text-white overflow-x-hidden">
       {/* 3D Background Scene */}
-      <HackerScene3D currentSection={activeSection} />
+      <HackerScene3D scrollProgress={scrollProgress} />
 
       {/* Scroll Progress Bar */}
       <motion.div
@@ -679,32 +692,49 @@ export default function CyberPortfolio() {
             </div>
           </motion.div>
 
-          {/* Hero Visual */}
+          {/* Hero Visual - Profile Picture */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
-            className="relative hidden lg:block"
+            className="relative flex justify-center lg:justify-end order-first lg:order-last mb-8 lg:mb-0"
           >
-            <div className="relative w-96 h-96 mx-auto">
-              {/* Rotating rings */}
-              <div className="absolute inset-0 border-2 border-cyan-500/20 rounded-full animate-spin-slow"></div>
-              <div className="absolute inset-4 border-2 border-green-500/20 rounded-full animate-spin-reverse"></div>
-              <div className="absolute inset-8 border-2 border-cyan-500/30 rounded-full animate-spin-slow"></div>
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto lg:mx-0">
+              {/* Outer glow effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/30 via-green-500/30 to-cyan-500/30 blur-2xl animate-pulse"></div>
               
-              {/* Profile Image */}
-              <div className="absolute inset-12 rounded-full overflow-hidden border-4 border-cyan-500/50">
+              {/* Rotating rings */}
+              <div className="absolute inset-0 border-2 border-cyan-500/40 rounded-full animate-spin-slow"></div>
+              <div className="absolute inset-2 sm:inset-3 md:inset-4 border-2 border-green-500/30 rounded-full animate-spin-reverse"></div>
+              <div className="absolute inset-4 sm:inset-6 md:inset-8 border-2 border-cyan-500/50 rounded-full animate-spin-slow"></div>
+              
+              {/* Profile Image Container */}
+              <div className="absolute inset-6 sm:inset-8 md:inset-10 lg:inset-12 rounded-full overflow-hidden border-4 border-cyan-400/70 shadow-lg shadow-cyan-500/30 backdrop-blur-sm">
                 <img
                   src="/rohit5.jpg"
                   alt="Rohit Saundalkar"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover object-center transition-all duration-500 hover:scale-110"
+                  style={{ objectPosition: 'center top' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 to-transparent"></div>
+                {/* Subtle gradient overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cyan-900/30"></div>
+                
+                {/* Scan line effect */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/5 to-transparent animate-scan"></div>
+                </div>
               </div>
               
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-cyan-500/10 rounded-full blur-xl animate-pulse"></div>
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-green-500/10 rounded-full blur-xl animate-pulse delay-500"></div>
+              {/* Floating particles */}
+              <div className="absolute -top-4 -right-4 w-16 sm:w-20 h-16 sm:h-20 bg-cyan-500/20 rounded-full blur-xl animate-pulse"></div>
+              <div className="absolute -bottom-4 -left-4 w-20 sm:w-24 h-20 sm:h-24 bg-green-500/20 rounded-full blur-xl animate-pulse delay-500"></div>
+              <div className="absolute top-1/2 -right-6 w-4 h-4 bg-cyan-400 rounded-full animate-ping"></div>
+              <div className="absolute bottom-1/4 -left-6 w-3 h-3 bg-green-400 rounded-full animate-ping delay-300"></div>
+              
+              {/* Tech label */}
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-1 bg-black/80 border border-cyan-500/50 rounded-full font-mono text-xs text-cyan-400 whitespace-nowrap">
+                &lt;DEVELOPER/&gt;
+              </div>
             </div>
           </motion.div>
         </div>
